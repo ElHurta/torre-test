@@ -5,10 +5,11 @@ import ResultsList from './components/ResultsList'
 import SearchSuggestions from './components/SearchSuggestions'
 
 import './App.css'
+import { UserInfo } from './interfaces'
 
 function App() {
 
-  const [suggestionsByName, setSuggestionsByName] = React.useState([])
+  const [suggestionsByName, setSuggestionsByName] = React.useState<UserInfo[]>([])
 
   return (
     <>

@@ -2,10 +2,11 @@ import React from 'react'
 import searchSuggestionsByName from '../services/api-service'
 
 import './SearchBar.css'
+import { UserInfo } from '../interfaces'
 
 export default function SearchBar({
     setSuggestionsByName
-  }: {setSuggestionsByName: React.Dispatch<React.SetStateAction<never[]>>}) {
+  }: {setSuggestionsByName: React.Dispatch<React.SetStateAction<UserInfo[]>>}) {
 
   const [searchTerm, setSearchTerm] = React.useState('')
 

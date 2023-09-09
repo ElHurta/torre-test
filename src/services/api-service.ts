@@ -1,5 +1,5 @@
-
-const searchSuggestionsByName = async (name: string) => {
+import { UserInfo } from '../interfaces';
+const searchSuggestionsByName = async (name: string): Promise<UserInfo[]> => {
     const response = await fetch('https://torre.ai/api/entities/_search', {
         method: 'POST',
         headers: {
