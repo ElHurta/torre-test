@@ -3,12 +3,20 @@ import Suggestion from './Suggestion'
 
 import './SearchSuggestions.css'
 
-export default function SearchSuggestions() {
+export default function SearchSuggestions({suggestionsByName} : {suggestionsByName: never[]}) {
   return (
     <ul className='suggestions-container'>
-        <li>
-            <Suggestion></Suggestion>
-        </li>
+        {
+          suggestionsByName.map((suggestion: any) => {
+            return (
+              <li key={suggestion.ggId}>
+                  <Suggestion
+                    profileData={suggestion}
+                  />
+              </li>
+            )
+          })
+        }
     </ul>
   )
 }

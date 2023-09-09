@@ -1,9 +1,14 @@
-import './App.css'
+import React from 'react'
+
 import SearchBar from './components/SearchBar'
 import ResultsList from './components/ResultsList'
 import SearchSuggestions from './components/SearchSuggestions'
 
+import './App.css'
+
 function App() {
+
+  const [suggestionsByName, setSuggestionsByName] = React.useState([])
 
   return (
     <>
@@ -14,8 +19,12 @@ function App() {
         <section className='search-section'>
           <h2>Search People By Name 🔎</h2>
           <section>
-            <SearchBar></SearchBar>
-            <SearchSuggestions></SearchSuggestions>
+            <SearchBar
+              setSuggestionsByName={setSuggestionsByName}
+            />
+            <SearchSuggestions
+              suggestionsByName={suggestionsByName}
+            />
             {/* <ResultsList></ResultsList> */}
           </section>
         </section>
