@@ -10,11 +10,13 @@ export default function SearchSuggestions({suggestionsByName} : {suggestionsByNa
         {
           suggestionsByName.map((suggestion: UserInfo) => {
             return (
-              <li key={suggestion.ggId}>
-                  <Suggestion
-                    profileData={suggestion}
-                  />
-              </li>
+              <a target="_blank" href={`https://torre.ai/${suggestion.username}`}>
+                <li key={suggestion.ggId}>
+                    <Suggestion
+                      profileData={suggestion}
+                    />
+                </li>
+              </a>
             )
           })
         }

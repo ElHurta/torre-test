@@ -15,6 +15,8 @@ export default function SearchBar({
       searchSuggestionsByName(searchTerm).then((res) => {
         setSuggestionsByName(res)
       })
+    } else {
+      setSuggestionsByName([])
     }
   }, [searchTerm, setSuggestionsByName])
 

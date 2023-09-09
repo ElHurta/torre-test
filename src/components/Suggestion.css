@@ -8,6 +8,10 @@
     padding: 0.5rem;
 }
 
+.profile-info h3, p {
+    margin: 0;
+}
+
 .profile-pic-container {
     width: 5%;
     padding: 0.5rem;

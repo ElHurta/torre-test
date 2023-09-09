@@ -7,3 +7,8 @@
     max-height: 400px;
     overflow-y: auto;
 }
+
+.suggestions-container a {
+    text-decoration: none;
+    color: #FFF;
+}
