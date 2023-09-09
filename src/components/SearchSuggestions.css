@@ -1,0 +1,9 @@
+.suggestions-container{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    background-color: #141414;;
+    max-height: 400px;
+    overflow-y: auto;
+}
