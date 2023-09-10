@@ -1,4 +1,4 @@
-# Name Search App
+# Torre Searching App | Technical Test | By Juan Hurtado 🚀
 
 This is a simple web application built using Vite and React that allows users to search for individuals by name and view their genome information. It also includes additional features like displaying recent search queries and saving favorite individuals.
 
