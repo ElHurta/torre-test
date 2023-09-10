@@ -29,7 +29,10 @@ function App() {
           <h1>Torre Technical Test - Juan Hurtado</h1>
         </header>
         <section className='search-section'>
-          <h2>Search People By Name 🔎</h2>
+          <header className='search-header'>
+            <h2>Search People By Name 🔎</h2>
+            <p>Click on the Empty Search Bar to see your recent searches</p>
+          </header>
           <section>
             <SearchBar
               setSuggestionsByName={setSuggestionsByName}
