@@ -31,3 +31,12 @@
 .search-header p {
     margin: 0.8rem 0;
 }
+
+.footer {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
+.footer a:visited{
+    color: #FFF;
+}

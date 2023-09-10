@@ -70,7 +70,7 @@ function App() {
             <p>📗 Type on the Search Bar to get suggestions, Click on the search button or Press Enter to get a Full Search from your input {'(minimum of 2 characters)'}</p>
             <p>🗃️ Click on the star button ⭐ to save your search</p>
           </header>
-          <section>
+          <main>
             <article className='main-content'>
               <SearchBar
                 setShowSuggestions={setShowSuggestions}
@@ -95,8 +95,11 @@ function App() {
                 />
               )
             }
-          </section>
+          </main>
         </section>
+        <footer className='footer'>
+          <p>🚀 This is a technical test for <a href="https://torre.ai/es">Torre.co</a> Made by <a href="https://github.com/ElHurta">Juan Hurtado</a> 🚀</p>
+        </footer>
       </main>
     </>
   )
