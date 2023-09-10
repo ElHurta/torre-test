@@ -1,31 +1,22 @@
 import React from 'react'
 
 import './FavoriteSearches.css'
-import { searchFullUsersByGgids } from '../services/api-service'
-import { FullUserInfo } from '../interfaces'
-import { AiOutlineDown } from 'react-icons/ai'
+import { AiFillDownCircle } from 'react-icons/ai'
 
-export default function FavoriteSearches({ favoriteSearches, setFavoriteSearches }: { favoriteSearches: string[], setFavoriteSearches: React.Dispatch<React.SetStateAction<string[]>> }) {
-
-
-    const [favoriteProfiles, setFavoriteProfiles] = React.useState<FullUserInfo[]>([])
-
-    React.useEffect(() => {
-        // Search favoriteSearches
-        if (favoriteSearches.length > 0) {
-            searchFullUsersByGgids(favoriteSearches)
-                .then((fullUsers) => {
-                    setFavoriteProfiles(fullUsers)
-                })
-        }
-    }, [favoriteSearches])
+export default function FavoriteSearches({showFavorites, setShowFavorites }: { showFavorites: boolean, setShowFavorites: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     return (
-        <article className='favorite-container'>
+        <section className='favorite-container' onClick={
+            () => {
+                setShowFavorites(!showFavorites)
+            }   
+        }>
             <div className='favorite-search'>
                 <p>Favorite Searches</p>
-                <AiOutlineDown/>
+                <AiFillDownCircle/>
             </div>
-        </article>
+            <article>
+            </article>
+        </section>
     )
 }

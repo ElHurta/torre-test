@@ -7,13 +7,17 @@ import './App.css'
 import { FullUserInfo, UserInfo } from './interfaces'
 import { getFrecuentSearches, saveFrecuentSearches, getFavoriteUsers, saveFavoriteUsers } from './services/session-storage'
 import FavoriteSearches from './components/FavoriteSearches'
+import { searchFullUsersByGgids } from './services/api-service'
 
 function App() {
 
   const [showSuggestions, setShowSuggestions] = React.useState<boolean>(false)
+  const [showFavorites, setShowFavorites] = React.useState<boolean>(false)
 
   const [suggestionsByName, setSuggestionsByName] = React.useState<UserInfo[]>([])
   const [suggestionsByGgId, setSuggestionsByGgId] = React.useState<FullUserInfo[]>([])
+
+  const [favoriteProfiles, setFavoriteProfiles] = React.useState<FullUserInfo[]>([])
 
   const [recentSearches, setRecentSearches] = React.useState<string[]>(
     getFrecuentSearches() || []
@@ -32,6 +36,26 @@ function App() {
     // Save favorite searches state to session storage
     saveFavoriteUsers(favoriteSearches)
   }, [favoriteSearches])
+
+  React.useEffect(() => {
+    // Search favoriteSearches
+    if (favoriteSearches.length > 0) {
+        searchFullUsersByGgids(favoriteSearches)
+            .then((fullUsers) => {
+                setFavoriteProfiles(fullUsers)
+            })
+    }
+  }, [favoriteSearches])
+
+  React.useEffect(() => {
+    // Select content to show
+    if (showFavorites) {
+      setSuggestionsByGgId(favoriteProfiles)
+      setShowSuggestions(true)
+    } else {
+      setSuggestionsByGgId([])
+    }
+  }, [showFavorites, favoriteProfiles])
 
   return (
     <>
@@ -55,8 +79,8 @@ function App() {
                 recentSearches={recentSearches}
               />
               <FavoriteSearches
-                favoriteSearches={favoriteSearches}
-                setFavoriteSearches={setFavoriteSearches}
+                showFavorites={showFavorites}
+                setShowFavorites={setShowFavorites}
               />
             </article>
             {
@@ -66,8 +90,8 @@ function App() {
                   suggestionsByGgId={suggestionsByGgId}
                   recentSearches={recentSearches}
                   favoriteSearches={favoriteSearches}
-                  setFavoriteSearches={setFavoriteSearches}
                   setRecentSearches={setRecentSearches}
+                  setFavoriteSearches={setFavoriteSearches}
                 />
               )
             }

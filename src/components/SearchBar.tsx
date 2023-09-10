@@ -52,9 +52,6 @@ export default function SearchBar({setShowSuggestions, setSuggestionsByName, set
         type='text'
         placeholder='Search by name on Torre Database!'
         onFocus={handleRecentSearch}
-        onBlur={() => {
-          setShowSuggestions(false)
-        }}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             handleClickedSearch()
