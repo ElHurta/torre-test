@@ -5,7 +5,7 @@ import { FullUserInfo, UserInfo } from '../interfaces'
 
 import './SearchBar.css'
 
-export default function SearchBar({setSuggestionsByName, setSuggestionsByGgId, recentSearches}: {setSuggestionsByName: React.Dispatch<React.SetStateAction<UserInfo[]>>,setSuggestionsByGgId: React.Dispatch<React.SetStateAction<FullUserInfo[]>> ,recentSearches: string[]}) {
+export default function SearchBar({setShowSuggestions, setSuggestionsByName, setSuggestionsByGgId, recentSearches}: {setShowSuggestions :  React.Dispatch<React.SetStateAction<boolean>>, setSuggestionsByName: React.Dispatch<React.SetStateAction<UserInfo[]>>,setSuggestionsByGgId: React.Dispatch<React.SetStateAction<FullUserInfo[]>> ,recentSearches: string[]}) {
 
   const [searchTerm, setSearchTerm] = React.useState('')
   
@@ -25,6 +25,8 @@ export default function SearchBar({setSuggestionsByName, setSuggestionsByGgId, r
   }
 
   const handleRecentSearch = () => {
+
+    setShowSuggestions(true)
     // Search from recent searches ggid
     if (recentSearches.length > 0 && searchTerm.length === 0) {
       searchFullUsersByGgids(recentSearches).then((res) => {
@@ -49,7 +51,10 @@ export default function SearchBar({setSuggestionsByName, setSuggestionsByGgId, r
         value={searchTerm}
         type='text'
         placeholder='Search by name on Torre Database!'
-        onClick={handleRecentSearch}
+        onFocus={handleRecentSearch}
+        onBlur={() => {
+          setShowSuggestions(false)
+        }}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             handleClickedSearch()

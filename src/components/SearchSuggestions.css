@@ -23,3 +23,19 @@
 .search-result a{
     width: 100%;
 }
+
+.fav-btn {
+    background-color: transparent;
+    color: #ece93d;
+    font-size: 1.5rem;
+
+    border: none;
+    border-radius: 50px;
+    outline: none;
+
+    cursor: pointer;
+}
+
+.fav-btn:hover {
+    color: #FFF;
+}

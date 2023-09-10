@@ -1,0 +1,19 @@
+.favorite-container {
+    width: 35%;
+    height: 3rem;
+    display: flex;
+}
+
+.favorite-search {
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    width: 100%;
+    background: #c7f764;
+    font-weight: 600;
+    color: black;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

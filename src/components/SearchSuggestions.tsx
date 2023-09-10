@@ -1,12 +1,12 @@
 import React from 'react'
 import Suggestion from './Suggestion'
 import { FullUserInfo, UserInfo } from '../interfaces'
-import { AiOutlineStar } from 'react-icons/ai'
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 
 import './SearchSuggestions.css'
 
 export default function SearchSuggestions(
-  {suggestionsByName, suggestionsByGgId, recentSearches, setRecentSearches} : {suggestionsByName: UserInfo[], suggestionsByGgId: FullUserInfo[] , recentSearches: string[], setRecentSearches: React.Dispatch<React.SetStateAction<string[]>>}
+  {suggestionsByName, suggestionsByGgId, recentSearches, favoriteSearches, setRecentSearches, setFavoriteSearches} : {suggestionsByName: UserInfo[], suggestionsByGgId: FullUserInfo[] , recentSearches: string[], favoriteSearches: string[],  setRecentSearches: React.Dispatch<React.SetStateAction<string[]>>, setFavoriteSearches: React.Dispatch<React.SetStateAction<string[]>>}
   ) {
 
   const handleRecentSearch = (ggid: string) => {
@@ -16,6 +16,14 @@ export default function SearchSuggestions(
         recentSearches.pop()
       }
       setRecentSearches([...recentSearches, ggid])
+    }
+  }
+
+  const toggleFavoriteSearch = (ggid: string) => {
+    if (favoriteSearches.includes(ggid)) {
+      setFavoriteSearches(favoriteSearches.filter((favoriteSearch) => favoriteSearch !== ggid))
+    } else {
+      setFavoriteSearches([...favoriteSearches, ggid])
     }
   }
 
@@ -40,7 +48,15 @@ export default function SearchSuggestions(
                     imgUrl = {suggestion.picture}
                   />
                 </a>
-                <AiOutlineStar className='fav-btn'/>
+                <span className='fav-btn' onClick={
+                  () => {
+                    toggleFavoriteSearch(suggestion.ggId)
+                  }
+                }>
+                  {
+                    favoriteSearches.includes(suggestion.ggId) ? <AiFillStar /> : <AiOutlineStar/>
+                  }
+                </span>
               </li>
               )
             })
@@ -69,7 +85,15 @@ export default function SearchSuggestions(
                     imgUrl = {suggestion.imageUrl}
                   />
                 </a>
-                <AiOutlineStar className='fav-btn'/>
+                <span className='fav-btn' onClick={
+                  () => {
+                    toggleFavoriteSearch(suggestion.ggId)
+                  }
+                }>
+                  {
+                    favoriteSearches.includes(suggestion.ggId) ? <AiFillStar /> : <AiOutlineStar/>
+                  }
+                </span>
               </li>
             )
           })

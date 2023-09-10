@@ -5,9 +5,12 @@ import SearchSuggestions from './components/SearchSuggestions'
 
 import './App.css'
 import { FullUserInfo, UserInfo } from './interfaces'
-import { getFrecuentSearches, saveFrecuentSearches } from './services/session-storage'
+import { getFrecuentSearches, saveFrecuentSearches, getFavoriteUsers, saveFavoriteUsers } from './services/session-storage'
+import FavoriteSearches from './components/FavoriteSearches'
 
 function App() {
+
+  const [showSuggestions, setShowSuggestions] = React.useState<boolean>(false)
 
   const [suggestionsByName, setSuggestionsByName] = React.useState<UserInfo[]>([])
   const [suggestionsByGgId, setSuggestionsByGgId] = React.useState<FullUserInfo[]>([])
@@ -16,10 +19,19 @@ function App() {
     getFrecuentSearches() || []
   )
 
+  const [favoriteSearches, setFavoriteSearches] = React.useState<string[]>(
+    getFavoriteUsers() || []
+  )
+
   React.useEffect(() => {
     // Save recent searches state to session storage
     saveFrecuentSearches(recentSearches)
   }, [recentSearches])
+
+  React.useEffect(() => {
+    // Save favorite searches state to session storage
+    saveFavoriteUsers(favoriteSearches)
+  }, [favoriteSearches])
 
   return (
     <>
@@ -35,17 +47,30 @@ function App() {
             <p>Click on the star button ⭐ to save your search</p>
           </header>
           <section>
-            <SearchBar
-              setSuggestionsByName={setSuggestionsByName}
-              setSuggestionsByGgId={setSuggestionsByGgId}
-              recentSearches={recentSearches}
-            />
-            <SearchSuggestions
-              suggestionsByName={suggestionsByName}
-              suggestionsByGgId={suggestionsByGgId}
-              recentSearches={recentSearches}
-              setRecentSearches={setRecentSearches}
-            />
+            <article className='main-content'>
+              <SearchBar
+                setShowSuggestions={setShowSuggestions}
+                setSuggestionsByName={setSuggestionsByName}
+                setSuggestionsByGgId={setSuggestionsByGgId}
+                recentSearches={recentSearches}
+              />
+              <FavoriteSearches
+                favoriteSearches={favoriteSearches}
+                setFavoriteSearches={setFavoriteSearches}
+              />
+            </article>
+            {
+              showSuggestions && (
+                <SearchSuggestions
+                  suggestionsByName={suggestionsByName}
+                  suggestionsByGgId={suggestionsByGgId}
+                  recentSearches={recentSearches}
+                  favoriteSearches={favoriteSearches}
+                  setFavoriteSearches={setFavoriteSearches}
+                  setRecentSearches={setRecentSearches}
+                />
+              )
+            }
           </section>
         </section>
       </main>

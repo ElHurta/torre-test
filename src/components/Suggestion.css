@@ -23,21 +23,3 @@
     height: 100%;
     border-radius: 50%;
 }
-
-.fav-btn {
-    background-color: transparent;
-    color: #a5a457;
-
-    width: 5%;
-    height: auto;
-
-    border: none;
-    border-radius: 50px;
-    outline: none;
-
-    cursor: pointer;
-}
-
-.fav-btn:hover {
-    color: #FFF;
-}
