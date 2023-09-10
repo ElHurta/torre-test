@@ -12,3 +12,14 @@
     text-decoration: none;
     color: #FFF;
 }
+
+.search-result{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.search-result a{
+    width: 100%;
+}

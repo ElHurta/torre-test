@@ -1,5 +1,4 @@
 import { FullUserInfo, UserInfo } from '../interfaces'
-import { AiOutlineStar } from 'react-icons/ai'
 
 import './Suggestion.css'
 
@@ -16,7 +15,6 @@ export default function Suggestion({suggestionData, imgUrl}: {suggestionData: Us
                 <h3>{suggestionData.name}</h3>
                 <p>{suggestionData.professionalHeadline}</p>
             </main>
-            <AiOutlineStar className='fav-btn'/>
         </article>
     )
 }

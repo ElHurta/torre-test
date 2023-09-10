@@ -1,6 +1,7 @@
 import React from 'react'
 import Suggestion from './Suggestion'
 import { FullUserInfo, UserInfo } from '../interfaces'
+import { AiOutlineStar } from 'react-icons/ai'
 
 import './SearchSuggestions.css'
 
@@ -24,17 +25,23 @@ export default function SearchSuggestions(
           {
             suggestionsByGgId.map((suggestion: FullUserInfo) => {
               return (
+                <li
+                key={suggestion.subjectId}
+                className='search-result'
+                >
                 <a
-                  key={suggestion.subjectId}
                   target="_blank"
-                  href={`https://torre.ai/${suggestion.username}`}>
-                  <li>
-                      <Suggestion
-                        suggestionData={suggestion}
-                        imgUrl = {suggestion.picture}
-                      />
-                  </li>
+                  href={`https://torre.ai/${suggestion.username}`}
+                  onClick={
+                    () => {handleRecentSearch(suggestion.ggId)}
+                  }>
+                  <Suggestion
+                    suggestionData={suggestion}
+                    imgUrl = {suggestion.picture}
+                  />
                 </a>
+                <AiOutlineStar className='fav-btn'/>
+              </li>
               )
             })
           }
@@ -47,20 +54,23 @@ export default function SearchSuggestions(
         {
           suggestionsByName.map((suggestion: UserInfo) => {
             return (
-              <a
+              <li
                 key={suggestion.ardaId || suggestion.ggId}
-                target="_blank"
-                href={`https://torre.ai/${suggestion.username}`}
-                onClick={
-                  () => {handleRecentSearch(suggestion.ggId)}
-                }>
-                <li>
-                    <Suggestion
-                      suggestionData={suggestion}
-                      imgUrl = {suggestion.imageUrl}
-                    />
-                </li>
-              </a>
+                className='search-result'
+                >
+                <a
+                  target="_blank"
+                  href={`https://torre.ai/${suggestion.username}`}
+                  onClick={
+                    () => {handleRecentSearch(suggestion.ggId)}
+                  }>
+                  <Suggestion
+                    suggestionData={suggestion}
+                    imgUrl = {suggestion.imageUrl}
+                  />
+                </a>
+                <AiOutlineStar className='fav-btn'/>
+              </li>
             )
           })
         }

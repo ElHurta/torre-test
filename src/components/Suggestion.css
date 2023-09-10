@@ -1,7 +1,6 @@
 .suggestion-container {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .profile-info {
@@ -14,13 +13,14 @@
 }
 
 .profile-pic-container {
-    width: 5%;
+    width: 10%;
     padding: 0.5rem;
     text-align: center;
 }
 
 .profile-pic-container img {
-    width: 100%;
+    width: 50px;
+    height: 100%;
     border-radius: 50%;
 }
 
