@@ -31,6 +31,7 @@ export default function SearchSuggestions(
                   <li>
                       <Suggestion
                         suggestionData={suggestion}
+                        imgUrl = {suggestion.picture}
                       />
                   </li>
                 </a>
@@ -56,6 +57,7 @@ export default function SearchSuggestions(
                 <li>
                     <Suggestion
                       suggestionData={suggestion}
+                      imgUrl = {suggestion.imageUrl}
                     />
                 </li>
               </a>

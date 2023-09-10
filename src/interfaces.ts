@@ -6,7 +6,7 @@ export interface UserInfo {
     comparableName: string
     username: string
     professionalHeadline: string
-    imageUrl?: string
+    imageUrl: string
     completion: number
     grammar: number
     weight: number
@@ -30,7 +30,7 @@ export interface FullUserInfo {
     locationName: string
     name: string
     openTo: string[]
-    picture?: string
+    picture: string
     professionalHeadline: string
     theme: string
     remoter: boolean
