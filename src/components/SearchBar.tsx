@@ -33,6 +33,16 @@ export default function SearchBar({setSuggestionsByName, setSuggestionsByGgId, r
     }
   }
 
+  const handleClickedSearch = () => {
+    // SearchByName no limit
+    if (searchTerm.length > 2) {
+      searchUsersByName(searchTerm, false).then((res) => {
+        setSuggestionsByName(res)
+        setSuggestionsByGgId([])
+      })
+    }
+  }
+
   return (
     <div className='search-bar-container'>
       <input
@@ -40,12 +50,18 @@ export default function SearchBar({setSuggestionsByName, setSuggestionsByGgId, r
         type='text'
         placeholder='Search by name on Torre Database!'
         onClick={handleRecentSearch}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleClickedSearch()
+          }
+        }}
         onChange={
           (e) => {handleChangeOnInput(e.target.value)}
         }
       />
       <button
         className='search-btn'
+        onClick={handleClickedSearch}
         >🔎</button>
     </div>
   )

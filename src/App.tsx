@@ -32,6 +32,8 @@ function App() {
           <header className='search-header'>
             <h2>Search People By Name 🔎</h2>
             <p>Click on the Empty Search Bar to see your recent searches</p>
+            <p>Type on the Search Bar to get suggestions, Click on the search button or Press Enter to get a Full Search from your input</p>
+            
           </header>
           <section>
             <SearchBar
