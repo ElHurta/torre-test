@@ -21,3 +21,7 @@
 .search-header {
     margin: 1rem 0;
 }
+
+.search-header p {
+    margin: 0.8rem 0;
+}

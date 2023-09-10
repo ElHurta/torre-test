@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface UserInfo {
     ardaId: number
     ggId: string
@@ -29,7 +30,7 @@ export interface FullUserInfo {
     locationName: string
     name: string
     openTo: string[]
-    picture: string
+    picture?: string
     professionalHeadline: string
     theme: string
     remoter: boolean

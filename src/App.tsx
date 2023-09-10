@@ -1,7 +1,6 @@
 import React from 'react'
 
 import SearchBar from './components/SearchBar'
-import ResultsList from './components/ResultsList'
 import SearchSuggestions from './components/SearchSuggestions'
 
 import './App.css'
@@ -33,7 +32,7 @@ function App() {
             <h2>Search People By Name 🔎</h2>
             <p>Click on the Empty Search Bar to see your recent searches</p>
             <p>Type on the Search Bar to get suggestions, Click on the search button or Press Enter to get a Full Search from your input</p>
-            
+            <p>Click on the star button ⭐ to save your search</p>
           </header>
           <section>
             <SearchBar
@@ -47,7 +46,6 @@ function App() {
               recentSearches={recentSearches}
               setRecentSearches={setRecentSearches}
             />
-            {/* <ResultsList/> */}
           </section>
         </section>
       </main>

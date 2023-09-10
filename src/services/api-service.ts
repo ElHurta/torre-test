@@ -1,7 +1,14 @@
 import { UserInfo, FullUserInfo } from '../interfaces';
+
+interface requestBody {
+    query: string,
+    identityType: string,
+    limit?: number
+}
+
 const searchUsersByName = async (name: string, limit?: boolean): Promise<UserInfo[]> => {
 
-    const requestBody = {
+    const requestBody : requestBody = {
         "query": name,
         "identityType": "person",
     }
