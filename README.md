@@ -31,7 +31,7 @@ To run this application locally, follow these steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/ElHurta/torre-test)
    cd name-search-app
    ```
 
