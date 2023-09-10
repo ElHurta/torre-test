@@ -1,11 +1,11 @@
 import React from 'react'
-import { UserInfo } from '../interfaces'
+import { FullUserInfo, UserInfo } from '../interfaces'
 
 import './Suggestion.css'
 
-export default function Suggestion({profileData}: {profileData: UserInfo}) {
+export default function Suggestion({suggestionData}: {suggestionData: UserInfo | FullUserInfo }) {
 
-    const imageUrl = profileData.imageUrl ? profileData.imageUrl : `https://ui-avatars.com/api/?name=${profileData.name}`
+    const imageUrl = suggestionData.imageUrl || suggestionData.picture || `https://ui-avatars.com/api/?name=${suggestionData.name}`
 
     return (
         <article className='suggestion-container'>
@@ -13,8 +13,8 @@ export default function Suggestion({profileData}: {profileData: UserInfo}) {
                 <img src={imageUrl} alt="placeholder" />
             </aside>
             <main className='profile-info'>
-                <h3>{profileData.name}</h3>
-                <p>{profileData.professionalHeadline}</p>
+                <h3>{suggestionData.name}</h3>
+                <p>{suggestionData.professionalHeadline}</p>
             </main>
         </article>
     )

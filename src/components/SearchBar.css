@@ -17,6 +17,20 @@
 
     border: none;
     outline: none;
+    color: #FFF;
 
     font-size: 1rem;
+}
+
+.search-btn {
+    background-color: #FFF;
+
+    width: 2rem;
+    height: 2rem;
+
+    border: none;
+    border-radius: 50px;
+    outline: none;
+
+    cursor: pointer;
 }

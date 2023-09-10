@@ -1,27 +1,36 @@
 import React from 'react'
-import searchSuggestionsByName from '../services/api-service'
+import {searchUsersByName, searchFullUsersByGgids} from '../services/api-service'
+
+import { FullUserInfo, UserInfo } from '../interfaces'
 
 import './SearchBar.css'
-import { UserInfo } from '../interfaces'
 
-export default function SearchBar({
-    setSuggestionsByName
-  }: {setSuggestionsByName: React.Dispatch<React.SetStateAction<UserInfo[]>>}) {
+export default function SearchBar({setSuggestionsByName, setSuggestionsByGgId, recentSearches}: {setSuggestionsByName: React.Dispatch<React.SetStateAction<UserInfo[]>>,setSuggestionsByGgId: React.Dispatch<React.SetStateAction<FullUserInfo[]>> ,recentSearches: string[]}) {
 
   const [searchTerm, setSearchTerm] = React.useState('')
-
+  
   React.useEffect(() => {
     if (searchTerm.length > 2) {
-      searchSuggestionsByName(searchTerm).then((res) => {
+      searchUsersByName(searchTerm, true).then((res) => {
         setSuggestionsByName(res)
+        setSuggestionsByGgId([])
       })
     } else {
       setSuggestionsByName([])
     }
-  }, [searchTerm, setSuggestionsByName])
+  }, [searchTerm, setSuggestionsByName, setSuggestionsByGgId])
 
-  const handleSearch = (value: string) => {
+  const handleChangeOnInput = (value: string) => {
     setSearchTerm(value)
+  }
+
+  const handleRecentSearch = () => {
+    // Search from recent searches ggid
+    if (recentSearches.length > 0 && searchTerm.length === 0) {
+      searchFullUsersByGgids(recentSearches).then((res) => {
+        setSuggestionsByGgId(res)
+      })
+    }
   }
 
   return (
@@ -30,11 +39,14 @@ export default function SearchBar({
         value={searchTerm}
         type='text'
         placeholder='Search by name on Torre Database!'
+        onClick={handleRecentSearch}
         onChange={
-          (e) => {handleSearch(e.target.value)}
+          (e) => {handleChangeOnInput(e.target.value)}
         }
       />
-      <button>🔎</button>
+      <button
+        className='search-btn'
+        >🔎</button>
     </div>
   )
 }
