@@ -15,8 +15,6 @@ export default function FavoriteSearches({showFavorites, setShowFavorites }: { s
                 <p>Favorite Searches</p>
                 <AiFillDownCircle/>
             </div>
-            <article>
-            </article>
         </section>
     )
 }

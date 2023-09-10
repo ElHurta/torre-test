@@ -45,6 +45,12 @@ export default function SearchBar({setShowSuggestions, setSuggestionsByName, set
     }
   }
 
+  const cleanSearch = () => {
+    setSearchTerm('')
+    setSuggestionsByName([])
+    setSuggestionsByGgId([])
+  }
+
   return (
     <div className='search-bar-container'>
       <input
@@ -61,6 +67,12 @@ export default function SearchBar({setShowSuggestions, setSuggestionsByName, set
           (e) => {handleChangeOnInput(e.target.value)}
         }
       />
+      <button
+        className='clean-btn'
+        onClick={cleanSearch}
+        >
+      ✖️
+      </button>
       <button
         className='search-btn'
         onClick={handleClickedSearch}

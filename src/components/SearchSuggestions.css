@@ -20,6 +20,10 @@
     padding: 0.5rem;
 }
 
+.search-result:hover{
+    background-color: #333;
+}
+
 .search-result a{
     width: 100%;
 }

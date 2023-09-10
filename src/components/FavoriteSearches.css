@@ -19,3 +19,7 @@
 
     cursor: pointer;
 }
+
+.favorite-search:hover {
+    background: #a6e636;
+}
